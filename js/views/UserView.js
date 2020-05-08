@@ -4,9 +4,9 @@ export default class UserView {
         this.loginUsername = 'txtUsername';
         this.loginUserpassword = 'txtPassword';
         this.loginInfo = 'mdlLogin-info';
-        this.loginButton = 'btnLogin';
-        this.registerButton = 'btnRegister';
-        this.logoutButton = 'btnLogout';
+        this.loginButton = document.getElementById('btnLogin');
+        this.registerButton = document.getElementById('btnRegister');
+        this.logoutButton = document.getElementById('btnLogout');
     }
 
     bindLoginForm(handler) {
@@ -22,19 +22,22 @@ export default class UserView {
         });
     }
 
+    bindLogoutAction(handler) {
+        this.logoutButton.addEventListener('click', event =>{
+            handler();
+        });
+    }
+
     displayLogin(login) {
-        let loginButton = document.getElementById(this.loginButton);
-        let registerButton = document.getElementById(this.registerButton);
-        let logoutButton = document.getElementById(this.logoutButton);
         
         if (login) {
-            loginButton.setAttribute('Disabled', '');
-            registerButton.setAttribute('Disabled', '');
-            logoutButton.removeAttribute('Disabled', '');
+            this.loginButton.setAttribute('Disabled', '');
+            this.registerButton.setAttribute('Disabled', '');
+            this.logoutButton.removeAttribute('Disabled', '');
         } else {
-            loginButton.removeAttribute('Disabled', '');
-            registerButton.removeAttribute('Disabled', '');
-            logoutButton.setAttribute('Disabled', '');
+            this.loginButton.removeAttribute('Disabled', '');
+            this.registerButton.removeAttribute('Disabled', '');
+            this.logoutButton.setAttribute('Disabled', '');
         }
     }
 

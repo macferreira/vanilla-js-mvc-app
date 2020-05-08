@@ -4,6 +4,7 @@ export default class UserController {
         this.userView = userView;
 
         this.userView.bindLoginForm(this.loginUser);
+        this.userView.bindLogoutAction(this.logoutUser);
         this.userModel.bindLoginChanged(this.onLoginChanged);
     }
 
@@ -14,6 +15,10 @@ export default class UserController {
 
     loginUser = (userName, userPassword) => {
         return this.userModel.login(userName, userPassword);
+    }
+
+    logoutUser = () => {
+        return this.userModel.logout();
     }
 
     onLoginChanged = login => {
